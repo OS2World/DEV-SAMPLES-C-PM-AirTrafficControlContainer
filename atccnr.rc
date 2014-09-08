@@ -1,0 +1,78 @@
+#define INCL_WIN
+#define INCL_GPI
+#include <os2.h>
+
+#include "atccnr.h"
+
+ICON    IDICON_JET  "jet.ico"
+
+DLGTEMPLATE IDDLG_CONTROLAIRCRAFT LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Control Aircraft", IDDLG_CONTROLAIRCRAFT, 155, 43, 198, 85, 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        LTEXT           "Heading (1-360 degrees)", -1, 9, 67, 123, 8
+        CONTROL         "", IDSPB_HEADING, 138, 65, 48, 12, WC_SPINBUTTON, 
+                        SPBS_ALLCHARACTERS | SPBS_NUMERICONLY | SPBS_MASTER | 
+                        SPBS_SERVANT | SPBS_JUSTDEFAULT | SPBS_FASTSPIN | 
+                        WS_GROUP | WS_TABSTOP | WS_VISIBLE
+        LTEXT           "Altitude (100's of feet)", -1, 9, 48, 123, 8
+        CONTROL         "", IDSPB_ALTITUDE, 138, 46, 48, 12, WC_SPINBUTTON, 
+                        SPBS_ALLCHARACTERS | SPBS_NUMERICONLY | SPBS_MASTER | 
+                        SPBS_SERVANT | SPBS_JUSTDEFAULT | SPBS_FASTSPIN | 
+                        WS_GROUP | WS_TABSTOP | WS_VISIBLE
+        LTEXT           "Speed (10's of knots)", -1, 9, 30, 125, 8
+        CONTROL         "", IDSPB_SPEED, 138, 28, 48, 12, WC_SPINBUTTON, 
+                        SPBS_ALLCHARACTERS | SPBS_NUMERICONLY | SPBS_MASTER | 
+                        SPBS_SERVANT | SPBS_JUSTDEFAULT | SPBS_FASTSPIN | 
+                        WS_GROUP | WS_TABSTOP | WS_VISIBLE
+        DEFPUSHBUTTON   "Give Instruction", DID_OK, 6, 4, 84, 14
+        PUSHBUTTON      "Cancel", DID_CANCEL, 93, 4, 40, 14
+    END
+END
+
+DLGTEMPLATE IDDLG_CNRSAMP LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Air Traffic Control Container", IDDLG_CNRSAMP, 29, 35, 248, 198, 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        CONTROL         "", IDCNR_SAMPLE, 6, 22, 235, 171, WC_CONTAINER, 
+                        CCS_EXTENDSEL | CCS_READONLY | CCS_MINIRECORDCORE
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Cancel", DID_CANCEL, 6, 4, 40, 14
+        PUSHBUTTON      "Help", -1, 49, 4, 40, 14, BS_HELP
+    END
+END
+
+MENU IDMENU_AIRCRAFT
+BEGIN
+    MENUITEM "~Control Aircraft",      IDMAIRCRAFT_CONTROLINSTRUCT
+END
+
+
+MENU IDMENU_CONTAINER
+{
+    SUBMENU  "~Views", -1
+    {
+        MENUITEM "~Radar",            IDMVIEW_RADAR
+        MENUITEM "~Name",             IDMVIEW_NAME
+        MENUITEM "~Details",          IDMVIEW_DETAILS
+        MENUITEM "T~ext",             IDMVIEW_TEXT
+    }
+}
+
+
+
+#define EXTENDED_HELP_PANEL_ID  1
+#define SUBTABLE_DUMMY          2
+
+HELPTABLE IDDLG_CNRSAMP
+{
+    HELPITEM IDDLG_CNRSAMP,       SUBTABLE_DUMMY,   EXTENDED_HELP_PANEL_ID
+}
+
+
+
+HELPSUBTABLE SUBTABLE_DUMMY
+{
+}

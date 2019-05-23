@@ -9,7 +9,10 @@ LICENSE
 
 COMPILE TOOLS
 ===============
-* 
+* ipfc
+* LINK386
+* rc
+* ICC
  
 AUTHORS
 ===============

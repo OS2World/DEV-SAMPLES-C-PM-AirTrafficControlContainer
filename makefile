@@ -1,36 +1,26 @@
-.SUFFIXES: .c .rc
+# nmake makefile
+#
+# Tools used:
+#  Compile::Watcom Resource Compiler
+#  Compile::GNU C
+#  Make: nmake or GNU make
+all : atccnr.exe atccnr.hlp
 
-ALL: atccnr.RES \
-     atccnr.exe atccnr.hlp
+atccnr.exe : atccnr.obj help.obj atccnr.res atccnr.def
+	gcc -Zomf atccnr.obj help.obj atccnr.res atccnr.def -o atccnr.exe
+	wrc atccnr.res
 
-atccnr.rc: atccnr.h jet.ico
+atccnr.obj : atccnr.c atccnr.h
+	gcc -Wall -Zomf -DOS2EMX_PLAIN_CHAR -c -O2 atccnr.c -o atccnr.obj
+
+help.obj : help.c help.h
+	gcc -Wall -Zomf -c -O2 help.c -o help.obj
+
+atccnr.res : atccnr.rc jet.ico
+	wrc -r atccnr.rc
 
 atccnr.hlp: atccnr.ipf
-  ipfc $*.ipf
+	wipfc atccnr.ipf
 
-atccnr.res: atccnr.rc
-
-
-atccnr.exe:  \
-  atccnr.res \
-  atccnr.obj \
-  help.obj \
-  MAKEFILE
-   @REM @<<atccnr.@0
-     $(LINKOPTS) +
-     atccnr.OBJ +
-     help.OBJ
-     atccnr.exe
-     
-     k:\toolkt21\os2lib\os2386.lib +
-     k:\ibmcpp\lib\dde4mbs.lib
-     ;
-<<
-   LINK386.EXE @atccnr.@0
-   rc atccnr.res atccnr.exe
-
-{.}.rc.res:
-   RC -r .\$*.RC
-
-{.}.c.obj:
-   ICC.EXE  .\$*.c
+clean :
+	rm -rf *exe *RES *obj *HLP

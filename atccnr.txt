@@ -1,0 +1,64 @@
+Name: 		ATCCNR
+Descripcion: 	Very simple ATC radar
+Date: 		2022-04-29
+Version:	1.01
+----------------------------   
+
+DESCRIPTION
+-----------
+This is a PM sample application that is a very simple ATC radar. 
+
+Welcome to Air Traffic Control Container, a very simple ATC radar simulator whose main purpose is to provide an interesting example
+of OS/2 PM Container programming.
+
+Please run the program and view the help for more information.
+
+REQUIREMENTS
+------------
+- yum install gcc libc-devel binutils kbuild-make watcom-wipfc
+
+COMPILE INSTRUCTIONS
+--------------------
+This version of this sample was modified to compile on ArcaOS with GCC 9 compiler. 
+
+1) Remember to have correct header files your path. For GCC the correct ones are the included on the "libc-devel", not the ones from the OS/2 Toolkit. Check your config.sys for "SET INCLUDE=C:\usr\include"
+
+2) Since I'm using the Watcom Resource Compiler (open source) instead of the classic rc.exe, and the the Watcom Linker, intead of the classic ilink.exe, add to your config.sys...
+ SET EMXOMFLD_LINKER=wl.exe
+ SET EMXOMFLD_TYPE=WLINK
+ SET EMXOMFLD_RC_TYPE=WRC
+ SET EMXOMFLD_RC=wrc.exe
+
+3) Run "make" or "make 2>&1 |tee make.out" to get the log file.
+
+
+TOOLS USED
+----------
+- ArcaOS	- Verion 5.0.6
+- WRC 		- Watcom Resource Compiler
+- wlink		- Watcom Linker
+- gcc		- gcc (GCC) 9.2.0 20190812 (OS/2 RPM build 9.2.0-5.oc00)
+- wipfc		- Watcom IPFC compiler for HLP files. 
+- make 		- Version 3.81 k2 (2017-11-10)
+
+TROUBLESHOOT
+------------
+The compile produce will run by just executing "make" on the directory. If you want to save the log file you can run it as "make 2>&1 |tee make.out" or run compile.cmd. The log will be saved into the "make.out" file.
+
+HISTORY
+---------- 
+- 1.01 - 2023-04-29
+Changed to compile without warnings with gcc 9 under ArcaOS 5.0.7
+
+- 1.00 
+Original version by Dave Briccetti
+
+LICENSE
+-------
+The 3-Clause BSD License.
+
+AUTHORS
+-------
+- Martin Iturbide (2023)
+- Dave Yeo (2023)
+- Dave Briccetti

@@ -50,7 +50,7 @@ InitializeHelp (HAB hab, HWND hwndFrame, USHORT idWnd,
 	    "Program will continue without help.",
 	    hinit.ulReturnCode);
 
-	WinMessageBox (HWND_DESKTOP, HWND_DESKTOP, szMsg,
+	WinMessageBox (HWND_DESKTOP, HWND_DESKTOP, (PCSZ) szMsg,
 	    (PSZ) "Help Creation Error", 1,
 	    MB_OK | MB_APPLMODAL | MB_MOVEABLE);
     }
@@ -87,7 +87,7 @@ ProcessHmMessages (HWND hwndHelpInstance,
             sprintf (szMsg, "Help Error %lx Occurred",
                 LONGFROMMP (mp1));
 	    WinMessageBox (HWND_DESKTOP, HWND_DESKTOP,
-		szMsg, "Help Error", 0,
+		(PCSZ) szMsg, (PCSZ) "Help Error", 0,
 		MB_OK | MB_APPLMODAL | MB_MOVEABLE);
 	}
 
@@ -96,4 +96,3 @@ ProcessHmMessages (HWND hwndHelpInstance,
 
     return (MRESULT) 0;
 }
-

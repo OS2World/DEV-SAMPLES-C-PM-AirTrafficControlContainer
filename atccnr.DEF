@@ -1,0 +1,10 @@
+;-------------------------------------
+; ATCCNR.DEF module definition file
+;-------------------------------------
+
+NAME           ATCCNR  WINDOWAPI
+
+DESCRIPTION    '@#OS2World:1.01#@##1## 29 Apr 2023 20:00:00     ARCAOS-507::::::v1.01@@PM ATC radar simulator program'
+HEAPSIZE       1024
+STACKSIZE      8192
+

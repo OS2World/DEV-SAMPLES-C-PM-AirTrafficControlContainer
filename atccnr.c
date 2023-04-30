@@ -434,8 +434,7 @@ static INT InsertContainerRecords (PINST pinst)
     HPOINTER        hptrIcon;           // Handle of jet icon
     RECTL           rclCnr;             // Container dimensions
     LONG            iRecord = 0;        // Record index
-    static const PSZ apszCallSignPrefixes [] =
-        { "AA", "DA", "UA", "TW" };
+    static const PSZ apszCallSignPrefixes [] = { "AA", "DA", "UA", "TW" };
     static const INT cPrefixes = sizeof apszCallSignPrefixes /
         sizeof apszCallSignPrefixes[0];
     CHAR            szBuf [30];
@@ -483,9 +482,9 @@ static INT InsertContainerRecords (PINST pinst)
         pacrTraverse->AssignedHeading  = rand() % 360 + 1;
         pacrTraverse->Speed         =
         pacrTraverse->AssignedSpeed = rand() % 20 + 10;
-        sprintf (szBuf, "%s%ld",
-            apszCallSignPrefixes [rand() % cPrefixes], rand() % 1000);
-        pacrTraverse->pszCallsign   = strdup (szBuf);
+        sprintf (szBuf, "%s%d", apszCallSignPrefixes [rand() % cPrefixes],
+					rand() % 1000);
+        pacrTraverse->pszCallsign   = (PSZ) strdup (szBuf);
 
         SetRecordText (pacrTraverse);
         pacrTraverse->recc.hptrIcon = hptrIcon;
@@ -528,7 +527,7 @@ static PSZ SetRecordText (PAPPCNRREC pacr)
     sprintf (szBuf, "%s\n%3ld %2ld", pacr->pszCallsign,
         pacr->Altitude, pacr->Speed);
 
-    return pacr->recc.pszIcon = strdup (szBuf);
+    return pacr->recc.pszIcon = (PSZ) strdup (szBuf);
 }
 
 
@@ -822,7 +821,7 @@ static INT CreateMemoryPS (PINST pinstMain, HPS hpsTarget,
     SIZEL   sizl;
     HDC     hdcTarget = GpiQueryDevice(hpsTarget);
 
-    pinstMain->hdcMem = DevOpenDC(pinstMain->hab,OD_MEMORY,"*",
+    pinstMain->hdcMem = DevOpenDC(pinstMain->hab,OD_MEMORY,(PCSZ) "*",
         0L,NULL,hdcTarget);
     assert (pinstMain->hdcMem != DEV_ERROR);
 

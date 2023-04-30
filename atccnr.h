@@ -16,3 +16,10 @@
 #define IDSPB_HEADING               301
 #define IDSPB_ALTITUDE              302
 #define IDSPB_SPEED                 303
+
+#ifndef max
+#define max(a,b) (((a) > (b)) ? (a) : (b))
+#endif
+#ifndef min
+#define min(a,b) (((a) < (b)) ? (a) : (b))
+#endif

@@ -2,9 +2,8 @@
 :title.Help for Air Traffic Control Container
 :docprof.
 :ctrldef.
-:ctrl ctrlid=a controls='PREVIOUS SEARCH PRINT INDEX CONTENTS ESC BACK FORWARD' coverpage.
+:ctrl ctrlid=a controls='SEARCH PRINT INDEX CONTENTS ESC BACK FORWARD' coverpage.
 :ectrldef.
-:body.
 
 :h1 res=1.General Help
 :i1.General Help
@@ -12,18 +11,15 @@
 a very simple ATC radar simulator whose main purpose is to
 provide an interesting example of OS/2 PM Container programming.
 Its design was stimulated by the author's visit in October, 1993,
-to Bay TRACON, the main air traffic control location for the San
-Francisco Bay Area.
+to Bay TRACON, the main air traffic control location for the San Francisco Bay Area.
 
 :i1.OS/2 Bay Area User Group
 :i1.Developers SIG
 :p.ATC Container was originally written for a presentation by the
 author to the OS/2 Bay Area User Group's
-:link reftype=fn refid=devsig.Developers SIG:elink., on container
-programming.
+:link reftype=fn refid=devsig.Developers SIG:elink., on container programming.
 
-:p.ATC Container illustrates several areas of
-container programming:
+:p.ATC Container illustrates several areas of container programming:
 :ul.
 :li.Multiple views
 :li.Inserting multiple container records
@@ -71,8 +67,7 @@ in Silicon Valley, and covers such topics as:
 :li.C++ and other object-oriented languages and facilities
 :li.Productive application development
 :eul.
-:p.For more information about the Developers SIG, contact Dave
-Briccetti.
+:p.For more information about the Developers SIG, contact Dave Briccetti.
 :efn.
 
 :h1.Views
@@ -131,5 +126,4 @@ up at program termination.
 is far from a real ATC simulator.
 :edl.
 
-:index.
 :euserdoc.

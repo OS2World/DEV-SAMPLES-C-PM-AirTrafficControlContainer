@@ -1,6 +1,8 @@
-DEV-SAMPLES-WPS-Air_Traffic_Control_Container
+DEV-SAMPLES-C-PM-AirTrafficControlContainer
 =============================================
 A very simple ATC radar simulator whose main purpose is to provide an interesting example of OS/2 PM Container programming.
+
+![Air traffic Control Container ScreenShot](/wiki/ATCCNR_001.png)
 
 LICENSE
 ===============
